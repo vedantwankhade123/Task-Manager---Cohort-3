@@ -1,6 +1,13 @@
+Home Page : 
+![Home page](image-1.png)
 
+Empty Home Page:
+![Empty State Home PAge](image-5.png)
 
 # Concepts Used in This Project
+
+Tree Diagram(Pipeline):
+![Pipeline](image-3.png)
 
 ## Parsing
 
@@ -48,6 +55,9 @@ Document
       └── body
            └── h1
 ```
+
+Card Flow: 
+![Carrd flow](image-4.png)
 
 JavaScript interacts with webpage elements through the DOM Tree.
 
@@ -157,3 +167,6 @@ In this project, Event Delegation is used for dynamically generated task cards t
 * Delete Task
 
 using a single click listener and checking `event.target`.
+
+Event Propagation: 
+![Event traversal/proppration](image-2.png)
