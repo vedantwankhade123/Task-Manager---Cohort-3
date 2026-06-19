@@ -9,6 +9,35 @@ const emptyState = document.querySelector(".empty-state-ui");
 const deleteModal = document.querySelector(".delete-modal");
 const confirmDelete = document.querySelector(".confirm-delete");
 const cancelDelete = document.querySelector(".cancel-delete");
+const titleInput = document.querySelector("#task-title");
+
+console.log(titleInput.value);
+console.log(titleInput.getAttribute("value"));
+
+
+const themeBtn = document.querySelector("#theme-toggle");
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const theme = document.body.classList.contains("dark")? "dark": "light";
+
+  document.body.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+  themeBtn.innerHTML =
+  theme === "dark"? '<i class="ri-sun-fill"></i>': '<i class="ri-moon-clear-fill"></i>';
+});
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+  document.body.setAttribute("data-theme", "dark");
+  themeBtn.innerHTML = '<i class="ri-sun-fill"></i>';
+} else {
+  themeBtn.innerHTML = '<i class="ri-moon-clear-fill"></i>';
+}
+
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 const categoryData = {
@@ -43,6 +72,7 @@ document.addEventListener("click", (e) => {
     tasks[index].completed = !tasks[index].completed;
     localStorage.setItem("tasks", JSON.stringify(tasks));
     renderTasks();
+    console.log(e.target.dataset.index);
   }
 });
 
@@ -60,7 +90,12 @@ function renderTasks() {
 
   tasks.forEach((task, index) => {
     hero.innerHTML += `
-      <div class="list ${task.completed ? "completed-task" : ""}">
+      <div
+        class="list ${task.completed ? "completed-task" : ""}"
+            data-id="${index}"
+            data-status="${task.completed}"
+            data-category="${task.selectedCategory}"
+        >
         <div class="left-part">
           <div class="box">
             <div class="checkbox ${task.completed ? "completed" : ""}"
@@ -116,6 +151,7 @@ openForms.forEach((button) => {
     editIndex = null;
 
     document.querySelector("#task-title").value = "";
+
     document.querySelector("#task-description").value = "";
 
     selectedCategory = "";
@@ -213,3 +249,46 @@ confirmDelete.addEventListener("click", () => {
   deleteModal.style.display = "none";
   deleteIndex = null;
 });
+
+
+const grandparent = document.querySelector(".grandparent");
+const parent = document.querySelector(".parent");
+const child = document.querySelector(".child-btn");
+
+if (grandparent && parent && child) {
+  grandparent.addEventListener(
+    "click",
+    () => {
+      console.log("Grandparent Capture");
+    },
+    true
+  );
+
+  parent.addEventListener(
+    "click",
+    () => {
+      console.log("Parent Capture");
+    },
+    true
+  );
+
+  child.addEventListener(
+    "click",
+    () => {
+      console.log("Child Capture");
+    },
+    true
+  );
+
+  grandparent.addEventListener("click", () => {
+    console.log("Grandparent Bubble");
+  });
+
+  parent.addEventListener("click", () => {
+    console.log("Parent Bubble");
+  });
+
+  child.addEventListener("click", () => {
+    console.log("Child Bubble");
+  });
+}

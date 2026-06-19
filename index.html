@@ -17,7 +17,16 @@
         <p>Manage your tasks easily</p>
       </div>
 
+      <nav class="nav-links">
+        <a href="#tasks-section">Tasks</a>
+        <a href="#propagation-section">Event Demo</a>
+        <a href="#pipeline-section">Rendering Pipeline</a>
+      </nav>
+
       <div class="right">
+        <button id="theme-toggle">
+          <i class="ri-moon-clear-fill"></i>
+        </button>
         <button class="open-form">Create Task</button>
       </div>
     </header>
@@ -26,12 +35,13 @@
       <h2>No Tasks!</h2>
       <p>Create your first task now</p>
       <button class="open-form">Create Task</button>
-      <img src="notaskimage.png" alt="Empty State Image">
+      <img src="notaskimage.png" alt="Empty State Image" />
     </div>
 
-    <main>
+    <main id="tasks-section">
       <div class="hero"></div>
     </main>
+
     <section class="overlay">
       <form>
         <div class="title">
@@ -71,6 +81,7 @@
         </div>
       </form>
     </section>
+
     <div class="delete-modal">
       <div class="delete-box">
         <h2>Delete Task?</h2>
@@ -80,6 +91,73 @@
           <button class="cancel-delete">Cancel</button>
           <button class="confirm-delete">Delete</button>
         </div>
+      </div>
+    </div>
+
+    <section id="propagation-section" class="propagation-demo">
+      <h2>Event Propagation Demo</h2>
+
+      <div class="grandparent">
+        Grandparent
+
+        <div class="parent">
+          Parent
+
+          <button class="child-btn">Click Me</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline-section" class="pipeline-section">
+      <h2>Browser Rendering Pipeline</h2>
+      <div class="pipeline-container">
+        <div class="pipeline-card">HTML</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-card">Parsing</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-card">Tokenization</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-card">DOM Tree</div>
+        <div class="merge">+</div>
+        <div class="pipeline-card">CSS</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-card">CSSOM Tree</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-card final">Render Tree</div>
+      </div>
+    </section>
+
+    <div class="pipeline-info">
+      <div class="info-card">
+        <h3>Parsing</h3>
+        <p>The browser reads the HTML document and converts it into tokens.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Tokenization</h3>
+        <p>
+          HTML is broken into meaningful tokens like tags, attributes and text.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>DOM Tree</h3>
+        <p>
+          Tokens are converted into nodes forming the Document Object Model.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>CSSOM Tree</h3>
+        <p>CSS rules are parsed and converted into a CSS Object Model.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Render Tree</h3>
+        <p>
+          DOM Tree and CSSOM Tree combine to create the Render Tree used for
+          painting.
+        </p>
       </div>
     </div>
 

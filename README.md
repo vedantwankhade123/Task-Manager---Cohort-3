@@ -1,0 +1,159 @@
+
+
+# Concepts Used in This Project
+
+## Parsing
+
+Parsing is the process where the browser reads HTML code and understands the structure of the webpage. It analyzes tags, attributes, and content to prepare them for rendering.
+
+Example:
+
+```html
+<h1>Hello World</h1>
+```
+
+The browser reads this code and understands that it is a heading element.
+
+---
+
+## Tokenization
+
+During tokenization, the browser breaks the HTML document into smaller pieces called tokens.
+
+Example:
+
+```html
+<h1>Hello World</h1>
+```
+
+Tokens generated:
+
+* Opening Tag (`<h1>`)
+* Text Content (`Hello World`)
+* Closing Tag (`</h1>`)
+
+These tokens are then used to build the DOM Tree.
+
+---
+
+## DOM Tree
+
+The DOM (Document Object Model) Tree is a tree-like representation of all HTML elements on a webpage.
+
+Example:
+
+```text
+Document
+ └── html
+      └── body
+           └── h1
+```
+
+JavaScript interacts with webpage elements through the DOM Tree.
+
+In this project, DOM methods such as `querySelector()`, `createElement()`, `append()`, and `remove()` were used to manipulate the DOM dynamically.
+
+---
+
+## CSSOM Tree
+
+The CSSOM (CSS Object Model) Tree is created from CSS rules.
+
+Just like HTML is converted into a DOM Tree, CSS is converted into a CSSOM Tree so the browser can understand styling information.
+
+Example:
+
+```css
+h1 {
+  color: blue;
+}
+```
+
+The browser converts these styles into CSSOM nodes.
+
+---
+
+## Render Tree
+
+The Render Tree is formed by combining:
+
+* DOM Tree
+* CSSOM Tree
+
+The Render Tree contains only visible elements and is used by the browser to paint content on the screen.
+
+Flow:
+
+```text
+HTML
+↓
+Parsing
+↓
+Tokenization
+↓
+DOM Tree
+
+CSS
+↓
+CSSOM Tree
+
+DOM Tree + CSSOM Tree
+↓
+Render Tree
+```
+
+---
+
+## Event Bubbling
+
+Event Bubbling is the default behavior where an event starts from the target element and moves upward through its ancestors.
+
+Example order:
+
+```text
+Child
+↓
+Parent
+↓
+Grandparent
+```
+
+In this project, Event Bubbling was demonstrated using nested elements and console logs.
+
+---
+
+## Event Capturing
+
+Event Capturing is the opposite of Event Bubbling. The event starts from the outermost ancestor and moves toward the target element.
+
+Example order:
+
+```text
+Grandparent
+↓
+Parent
+↓
+Child
+```
+
+This behavior was demonstrated using the third parameter of `addEventListener()` set to `true`.
+
+---
+
+## Event Delegation
+
+Event Delegation is a technique where a single event listener is attached to a parent element instead of attaching separate listeners to multiple child elements.
+
+Benefits:
+
+* Better performance
+* Less memory usage
+* Handles dynamically created elements automatically
+
+In this project, Event Delegation is used for dynamically generated task cards to handle actions such as:
+
+* Complete Task
+* Update Task
+* Delete Task
+
+using a single click listener and checking `event.target`.
