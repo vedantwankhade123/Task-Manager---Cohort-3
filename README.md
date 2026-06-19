@@ -170,3 +170,81 @@ using a single click listener and checking `event.target`.
 
 Event Propagation: 
 ![Event traversal/proppration](image-2.png)
+
+
+## Difference Between `input.value` and `input.getAttribute("value")`
+
+In JavaScript, HTML attributes and DOM properties are related but not the same.
+
+### `input.value`
+
+The `value` property returns the **current value** of the input field.
+
+Example:
+
+```javascript
+const input = document.querySelector("input");
+console.log(input.value);
+```
+
+If the user types something into the input box, `input.value` will return the updated value entered by the user.
+
+---
+
+### `input.getAttribute("value")`
+
+The `getAttribute("value")` method returns the **original value written in the HTML attribute**.
+
+Example:
+
+```javascript
+const input = document.querySelector("input");
+console.log(input.getAttribute("value"));
+```
+
+This value does not automatically change when the user types into the input field.
+
+---
+
+### Example
+
+HTML:
+
+```html
+<input type="text" value="Vedant">
+```
+
+JavaScript:
+
+```javascript
+console.log(input.value);
+console.log(input.getAttribute("value"));
+```
+
+Initial Output:
+
+```text
+Vedant
+Vedant
+```
+
+After changing the input to:
+
+```text
+Vedant Wankhade
+```
+
+Output becomes:
+
+```text
+input.value                 → Vedant Wankhade
+input.getAttribute("value") → Vedant
+```
+
+### Conclusion
+
+* `input.value` → Current value of the input field (Property)
+* `input.getAttribute("value")` → Original value written in HTML (Attribute)
+
+This demonstrates the difference between DOM Properties and HTML Attributes.
+
